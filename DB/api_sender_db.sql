@@ -30,3 +30,12 @@ CREATE TABLE IF NOT EXISTS message(
     CONSTRAINT FK_MESSAGE_METHOD FOREIGN KEY (method) REFERENCES messenger_settings(messenger_id),
     CONSTRAINT FK_MESSAGE_ACCOUNT_ID FOREIGN KEY (account_id) REFERENCES account(id)
 );
+
+CREATE TABLE IF NOT EXISTS message_list(
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    message TEXT NOT NULL
+);
+
+INSERT INTO message_list (message) VALUES ('Привет');
+INSERT INTO message_list (message) VALUES ('Пока');
+INSERT INTO message_list (message) VALUES ('Как дела?');
