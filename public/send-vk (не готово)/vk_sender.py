@@ -16,7 +16,6 @@ for event in longpoll.listen():
             id = event.user_id
 
             if msg == 'привет':
-                #res = sender(104690258, 'Привет!')
                 res = sender(567096304, 'Привет!')
                 print(res)
             else:
