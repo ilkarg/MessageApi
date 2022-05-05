@@ -15,11 +15,15 @@ class MessageController extends BaseController
             }
 
             if (preg_match('/^\+?\d+$/', $request->input('to'))) {
-                shell_exec('cd send-whatsapp && python whatbot.py ' . $request->input('to') . ' ' . $request->input('message'));
-
-                echo 'account: ' . $request->input('account') 
-                . PHP_EOL . 'to: ' . $request->input('to') 
-                . PHP_EOL . 'message: ' . $request->input('message');
+                if (strtolower($request->input('account')) == 'whatsapp')
+                    shell_exec('cd send-whatsapp && python whatbot.py ' . $request->input('to') . ' ' . $request->input('message'));
+                else if (strtolower($request->input('account')) == 'telegram')
+                    echo 'Отправляем в телеграм';
+                else if (strtolower($request->input('account')) == 'vk' || strtolower($request->input('account')) == 'вк'
+                || strtolower($request->input('account')) == 'vkontakte' || strtolower($request->input('account')) == 'вконтакте')
+                    echo 'Отправляем во вконтакте';
+                else 
+                    echo 'Неверный тип account';
             }
             else
                 echo '$request->input("to") is not int';

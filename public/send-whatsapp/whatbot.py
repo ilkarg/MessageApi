@@ -4,7 +4,7 @@ import sys
 import mouse
 from mysql.connector import connect, Error
 
-def send_message(mobile, message_id):
+def send_message(mobile, message_id, tab_close):
     message = ''
     status = True
 
@@ -24,11 +24,11 @@ def send_message(mobile, message_id):
         print(err)
 
     if status:
-        pywhatkit.sendwhatmsg_instantly(phone_no=mobile, message=message)
+        pywhatkit.sendwhatmsg_instantly(phone_no=mobile, message=message, tab_close=tab_close)
 
 def main():
     if len(sys.argv) >= 3:
-        send_message(sys.argv[1], sys.argv[2])
+        send_message(sys.argv[1], sys.argv[2], True)
 
 if __name__ == '__main__':
     try:
