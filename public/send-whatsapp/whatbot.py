@@ -19,9 +19,9 @@ def send_message(mobile, message_id, tab_close):
                 cursor.execute('SELECT message FROM message_list WHERE id=' + message_id)
                 result = cursor.fetchall()
                 message = result[0][0]
-    except Error as err:
+    except Error as error:
         status = False
-        print(err)
+        print(f'ERROR > {error}')
 
     if status:
         pywhatkit.sendwhatmsg_instantly(phone_no=mobile, message=message, tab_close=tab_close)
@@ -36,5 +36,5 @@ if __name__ == '__main__':
         mouse.move(mouse.get_position()[0] - 50, mouse.get_position()[1] - 100)
         mouse.click(button='left')
         keyboard.press('enter')
-    except Exception as err:
-        print(err)
+    except Exception as error:
+        print(f'ERROR > {error}')

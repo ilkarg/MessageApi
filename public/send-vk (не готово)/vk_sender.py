@@ -21,5 +21,5 @@ for event in longpoll.listen():
             else:
                 res = sender(104690258, 'Я тебя не пойму')
                 print(res)
-    except Exception as err:
-        print(err)
+    except Exception as error:
+        print(f'ERROR > {error}')

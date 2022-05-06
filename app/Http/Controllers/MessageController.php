@@ -16,9 +16,9 @@ class MessageController extends BaseController
 
             if (preg_match('/^\+?\d+$/', $request->input('to'))) {
                 if (strtolower($request->input('account')) == 'whatsapp')
-                    shell_exec('cd send-whatsapp && python whatbot.py ' . $request->input('to') . ' ' . $request->input('message'));
+                    shell_exec('cd public/send-whatsapp && python whatbot.py ' . $request->input('to') . ' ' . $request->input('message'));
                 else if (strtolower($request->input('account')) == 'telegram')
-                    echo 'Отправляем в телеграм';
+                    shell_exec('cd public/send-telegram && python send_message.py ' . $request->input('to') . ' ' . $request->input('message'));
                 else if (strtolower($request->input('account')) == 'vk' || strtolower($request->input('account')) == 'вк'
                 || strtolower($request->input('account')) == 'vkontakte' || strtolower($request->input('account')) == 'вконтакте')
                     echo 'Отправляем во вконтакте';
