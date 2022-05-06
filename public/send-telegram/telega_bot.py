@@ -30,7 +30,7 @@ async def contact(message):
                 database='api_sender_db'
             ) as connection:
                 with connection.cursor() as cursor:
-                    cursor.execute(f"INSERT INTO user_list (account_id, number_phone) VALUES ('{user_id}', '{phonenumber}')")
+                    cursor.execute(f"INSERT INTO user_list (account_id, number_phone, messenger) VALUES ('{user_id}', '{phonenumber}', 'telegram')")
                     connection.commit()
         except Error as error:
             status = False

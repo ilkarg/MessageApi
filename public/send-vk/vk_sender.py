@@ -16,10 +16,8 @@ for event in longpoll.listen():
             id = event.user_id
 
             if msg == 'привет':
-                res = sender(567096304, 'Привет!')
-                print(res)
+                sender(104690258, 'Привет!')
             else:
-                res = sender(104690258, 'Я тебя не пойму')
-                print(res)
+                sender(104690258, 'Я тебя не пойму')
     except Exception as error:
         print(f'ERROR > {error}')

@@ -19,9 +19,8 @@ class MessageController extends BaseController
                     shell_exec('cd public/send-whatsapp && python whatbot.py ' . $request->input('to') . ' ' . $request->input('message'));
                 else if (strtolower($request->input('account')) == 'telegram')
                     shell_exec('cd public/send-telegram && python send_message.py ' . $request->input('to') . ' ' . $request->input('message'));
-                else if (strtolower($request->input('account')) == 'vk' || strtolower($request->input('account')) == 'вк'
-                || strtolower($request->input('account')) == 'vkontakte' || strtolower($request->input('account')) == 'вконтакте')
-                    echo 'Отправляем во вконтакте';
+                else if (strtolower($request->input('account')) == 'vkontakte')
+                    shell_exec('cd public/send-vk && python send_message.py ' . $request->input('to') . ' ' . $request->input('message'));
                 else 
                     echo 'Неверный тип account';
             }
